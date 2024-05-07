@@ -8,6 +8,7 @@ from sqlalchemy.sql import func, text
 from flask_wtf import CSRFProtect
 import os
 
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://flask_app_bot:flaskApp@LENOVO/Production ?driver=ODBC Driver 17 for SQL Server'
