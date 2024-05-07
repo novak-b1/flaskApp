@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+    <h1> Production Data Table </h1>
+    <a href="/ViewRecords" class="button">View Production Entries</a>
+    <a href="/NewEntry" class="button">Create New Entry</a>
+    <a href="/page3" class="button">Go to Page 3</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Cell</th>
+            <th>Item</th>
+            <th>Line</th>
+            <th>Shift</th>
+            <th># of People</th>
+            <th># of Hours</th>
+            <th># Produced</th>
+            <th># Defects</th>
+            <th>Notes</th>
+            <th>Operator</th>
+
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.ID }}</td>
+            <td>{{ row.DateWorked }}</td>
+            <td>{{ row.Cell }}</td>
+            <td>{{ row.Item }}</td>
+            <td>{{ row.Line }}</td>
+            <td>{{ row.TimeShift }}</td>
+            <td>{{ row.NumberPeople }}</td>
+            <td>{{ row.NumberHours }}</td>
+            <td>{{ row.NumberProduced }}</td>
+            <td>{{ row.NumberDefects }}</td>
+            <td>{{ row.Notes }}</td>
+            <td>{{ row.Operator }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="pagination">
+        {% if pagination.has_prev %}
+            <a href="{{ url_for('index', page=pagination.prev_num) }}">Previous</a>
+        {% endif %}
+        <span>Page {{ pagination.page }} of {{ pagination.pages }}</span>
+        {% if pagination.has_next %}
+            <a href="{{ url_for('index', page=pagination.next_num) }}">Next</a>
+        {% endif %}
+    </div>
+{% endblock %}

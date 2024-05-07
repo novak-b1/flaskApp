@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %} Create New Record {% endblock %}
+
+
+{% block content %}
+    <h1> Create New Record </h1>
+
+    <body>
+        <h1>Intake Form</h1>
+
+        <form action="/submit-NewEntry" method="POST">
+
+            {{ form.hidden_tag() }}
+        <p>
+            {{ form.cell.label }}<br>
+            {{ form.cell(size=32) }}
+        </p>
+        <p>
+            {{ form.operator.label }}<br>
+            {{ form.operator(size=32) }}
+        </p>
+        <p>
+            {{ form.item.label }}<br>
+            {{ form.item(size=32) }}
+        </p>
+        <p>
+            {{ form.date.label }}<br>
+            {{ form.date(size=32) }}
+        </p>
+        <p>
+            {{ form.line.label }}<br>
+            {{ form.line(size=32) }}
+        </p>
+        <p>
+            {{ form.shift.label }}<br>
+            {{ form.shift(size=32) }}
+        </p>
+        <p>
+            {{ form.numberPeople.label }}<br>
+            {{ form.numberPeople(size=32) }}
+        </p>
+        <p>
+            {{ form.numberHours.label }}<br>
+            {{ form.numberHours(size=32) }}
+        </p>
+        <p>
+            {{ form.numberProduced.label }}<br>
+            {{ form.numberProduced(size=32) }}
+        </p>
+        <p>
+            {{ form.numberDefects.label }}<br>
+            {{ form.numberDefects(size=32) }}
+        </p>
+        <p>
+            {{ form.notes.label }}<br>
+            {{ form.notes(size=32) }}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+    </body>
+{% endblock %}

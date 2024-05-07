@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %} View Records {% endblock %}
+
+
+{% block content %}
+    <h1> Find Production Records </h1>
+
+    <body>
+        <h1>Search by field</h1>
+
+        <form action="/RetrieveRecords" method="POST">
+
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.cell.label }}<br>
+                {{ form.cell(size=32) }}
+            </p>
+            <p>
+                {{ form.operator.label }}<br>
+                {{ form.operator(size=32) }}
+            </p>
+            <p>
+                {{ form.item.label }}<br>
+                {{ form.item(size=32) }}
+            </p>
+            <p>
+                {{ form.date.label }}<br>
+                {{ form.date(size=32) }}
+            </p>
+            <p>{{ form.submit() }}</p>
+    </form>
+    {% if rows|length > 0 %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Cell</th>
+                <th>Item</th>
+                <th>Line</th>
+                <th>Shift</th>
+                <th># of People</th>
+                <th># of Hours</th>
+                <th># Produced</th>
+                <th># Defects</th>
+                <th>Notes</th>
+                <th>Operator</th>
+
+            </tr>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.ID }}</td>
+                <td>{{ row.DateWorked }}</td>
+                <td>{{ row.Cell }}</td>
+                <td>{{ row.ITEM }}</td>
+                <td>{{ row.Line }}</td>
+                <td>{{ row.TimeShift }}</td>
+                <td>{{ row.NumberPeople }}</td>
+                <td>{{ row.NumberHours }}</td>
+                <td>{{ row.NumberProduced }}</td>
+                <td>{{ row.NumberDefects }}</td>
+                <td>{{ row.NOTES }}</td>
+                <td>{{ row.Operator }}</td>
+
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+    </body>
+
+{% endblock %}
